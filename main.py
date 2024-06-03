@@ -138,7 +138,7 @@ def main_page(page):
 
     # Logo (cosmetic)
     logo = ft.Image(
-        src=f"/images/logobaru.png",  # Ganti dengan URL logo Anda
+        src="/images/logobaru.png",  # Ganti dengan URL logo Anda
         width=500,
         height=500,
         fit=ft.ImageFit.CONTAIN,
