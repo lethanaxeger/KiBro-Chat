@@ -1,4 +1,4 @@
-from flet import *
+import flet as ft
 
 # Class for declerate Message
 class Message:
@@ -8,20 +8,20 @@ class Message:
         self.message_type = message_type
 
 # Class for chat message element
-class ChatMessage(Row):
+class ChatMessage(ft.Row):
     def __init__(self, message: Message):
         super().__init__()
         self.vertical_alignment = "start"
         self.controls = [
-            CircleAvatar(
-                content=Text(self.get_initials(message.user_name)),
-                color=colors.WHITE,
+            ft.CircleAvatar(
+                content=ft.Text(self.get_initials(message.user_name)),
+                color=ft.colors.WHITE,
                 bgcolor=self.get_avatar_color(message.user_name),
             ),
-            Column(
+            ft.Column(
                 [
-                    Text(message.user_name, weight="bold"),
-                    Text(message.text, selectable=True),
+                    ft.Text(message.user_name, weight="bold"),
+                    ft.Text(message.text, selectable=True),
                 ],
                 tight=True,
                 spacing=5,
@@ -33,10 +33,10 @@ class ChatMessage(Row):
 
     def get_avatar_color(self, user_name: str):
         colors_lookup = [
-            colors.AMBER, colors.BLUE, colors.BROWN, colors.CYAN,
-            colors.GREEN, colors.INDIGO, colors.LIME, colors.ORANGE,
-            colors.PINK, colors.PURPLE, colors.RED, colors.TEAL,
-            colors.YELLOW,
+            ft.colors.AMBER, ft.colors.BLUE, ft.colors.BROWN, ft.colors.CYAN,
+            ft.colors.GREEN, ft.colors.INDIGO, ft.colors.LIME, ft.colors.ORANGE,
+            ft.colors.PINK, ft.colors.PURPLE, ft.colors.RED, ft.colors.TEAL,
+            ft.colors.YELLOW,
         ]
         return colors_lookup[hash(user_name) % len(colors_lookup)]
 
@@ -53,7 +53,7 @@ def chat_page(page):
         else:
             page.session.set("user_name", join_user_name.value)
             page.dialog.open = False
-            new_message.prefix = Text(f"{join_user_name.value}: ")
+            new_message.prefix = ft.Text(f"{join_user_name.value}: ")
             page.pubsub.send_all(Message(user_name=join_user_name.value, text=f"{join_user_name.value} has joined the chat.", message_type="login_message"))
             page.update()
 
@@ -68,36 +68,36 @@ def chat_page(page):
         if message.message_type == "chat_message":
             m = ChatMessage(message)
         elif message.message_type == "login_message":
-            m = Text(message.text, italic=True, color=colors.BLACK45, size=12)
+            m = ft.Text(message.text, italic=True, color=ft.colors.BLACK45, size=12)
         chat.controls.append(m)
         page.update()
 
     page.pubsub.subscribe(on_message)
 
     # For login (username) purpose
-    join_user_name = TextField(
+    join_user_name = ft.TextField(
         label="Enter your name to join the chat",
         autofocus=True,
         on_submit=join_chat_click,
     )
-    page.dialog = AlertDialog(
+    page.dialog = ft.AlertDialog(
         open=True,
         modal=True,
-        title=Text("Welcome!"),
-        content=Column([join_user_name], width=300, height=70, tight=True),
-        actions=[ElevatedButton(text="Join chat", on_click=join_chat_click)],
+        title=ft.Text("Welcome!"),
+        content=ft.Column([join_user_name], width=300, height=70, tight=True),
+        actions=[ft.ElevatedButton(text="Join chat", on_click=join_chat_click)],
         actions_alignment="end",
     )
 
     # Chat list
-    chat = ListView(
+    chat = ft.ListView(
         expand=True,
         spacing=10,
         auto_scroll=True,
     )
 
     # Format for incoming new chat
-    new_message = TextField(
+    new_message = ft.TextField(
         hint_text="Write a message...",
         autofocus=True,
         shift_enter=True,
@@ -110,19 +110,19 @@ def chat_page(page):
 
     # Page layout
     page.add(
-        Container(
+        ft.Container(
             content=chat,
-            border=border.all(1, colors.OUTLINE),
+            border=ft.border.all(1, ft.colors.OUTLINE),
             border_radius=5,
             padding=10,
             expand=True,
-            bgcolor=colors.BLUE_GREY_600,
+            bgcolor=ft.colors.BLUE_GREY_600,
         ),
-        Row(
+        ft.Row(
             [
                 new_message,
-                IconButton(
-                    icon=icons.SEND_ROUNDED,
+                ft.IconButton(
+                    icon=ft.icons.SEND_ROUNDED,
                     tooltip="Send message",
                     on_click=send_message_click,
                 ),
@@ -133,38 +133,38 @@ def chat_page(page):
 # Main page section
 def main_page(page):
     page.title = "Kita Ngobrol"
-    page.bgcolor = colors.LIGHT_BLUE_50
+    page.bgcolor = ft.colors.LIGHT_BLUE_50
     page.padding = 50
 
     # Logo (cosmetic)
-    logo = Image(
+    logo = ft.Image(
         src=f"/images/logobaru.png",  # Ganti dengan URL logo Anda
         width=500,
         height=500,
-        fit=ImageFit.CONTAIN,
+        fit=ft.ImageFit.CONTAIN,
     )
 
     # Membuat tombol untuk navigasi ke halaman chat
-    button1 = ElevatedButton("Yuk Ngobrol....", on_click=lambda e: chat_page(page))
+    button1 = ft.ElevatedButton("Yuk Ngobrol....", on_click=lambda e: chat_page(page))
     
     # Menambahkan logo dan tombol ke halaman
     page.add(
-        Container(
-            content=Column(
+        ft.Container(
+            content=ft.Column(
                 [
-                    Container(height=2),  # Spasi di atas logo untuk menggeser ke atas
+                    ft.Container(height=2),  # Spasi di atas logo untuk menggeser ke atas
                     logo,
-                    Container(height=2),  # Spasi antara logo dan tombol
-                    Row(
+                    ft.Container(height=2),  # Spasi antara logo dan tombol
+                    ft.Row(
                         [button1],
-                        alignment=MainAxisAlignment.CENTER
+                        alignment=ft.MainAxisAlignment.CENTER
                     )
                 ],
-                alignment=MainAxisAlignment.CENTER,
-                horizontal_alignment=CrossAxisAlignment.CENTER
+                alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER
             ),
-            alignment=alignment.center,
+            alignment=ft.alignment.center,
         )
     )
 
-app(target=main_page, view=WEB_BROWSER)
+ft.app(target=main_page, view=ft.WEB_BROWSER)
