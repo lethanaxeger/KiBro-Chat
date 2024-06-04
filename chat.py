@@ -32,6 +32,8 @@ class ChatMessage(ft.Row):
                 spacing=5,
             ),
         ]
+        
+        
 
     #For catch username inisials
     def get_initials(self, user_name: str):
@@ -88,16 +90,10 @@ def chat_page(page):
 
     def on_message(message: Message):
         if message.message_type == "chat_message":
-            while True:
-                try:
-                    pesan = cs.client_socket.recv(1024).decode()
-                    # print(message) #For debungging purposes
-                except:
-                    # If an error occurs, close the client socket
-                    #print("Error receiving message.")
-                    cs.client_socket.close()
-                    break
-
+            # message = cs.client_socket.recv(1024).decode()
+            # # print(message) #For debungging purposes
+            # # If an error occurs, close the client socket
+            # cs.client_socket.close()
             m = ChatMessage(message)
         elif message.message_type == "login_message":
             m = ft.Text(message.text, italic=True, color=ft.colors.BLACK45, size=12)
@@ -148,7 +144,10 @@ def chat_page(page):
             border_radius=5,
             padding=10,
             expand=True,
+            # Background
+            image_src="/images/kibronewwwww.png",
             bgcolor=ft.colors.BLUE_GREY_600,
+            # opacity=0.5,
         ),
         ft.Row(
             [
