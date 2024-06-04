@@ -39,7 +39,7 @@ Now, you're ready to use this code. All you need to do is:
 - Run the main.py
   > py .\main.py
 
-Voila!, KiBro is running in your web. You can use it in any devices. Just access the IP following with the same PORT.
+Voila!, KiBro is running in your web. You can access it in any devices. Just add the same IP and PORT from your local device.
   
 ## If you're using python instead py, just change it to python
   > python [example]
