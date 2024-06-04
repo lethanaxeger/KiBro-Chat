@@ -166,4 +166,4 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connect to the server
 #client_socket.connect(('127.0.0.1', 5555)) //Localhost IP
-client_socket.connect((cs.IP, 5555))
+client_socket.connect((cs.IP, cs.PORT))
