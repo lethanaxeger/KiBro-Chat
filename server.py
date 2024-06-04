@@ -1,5 +1,6 @@
 import socket
 import threading
+import c_socket as cs
 
 # Function to handle client connections
 def handle_client(client_socket, client_address):
@@ -31,7 +32,7 @@ def broadcast(pesan):
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Bind the server to a specific address and port
-server.bind(('0.0.0.0', 5555))
+server.bind(('0.0.0.0', cs.PORT))
 
 # Listen for incoming connections
 server.listen(5)
