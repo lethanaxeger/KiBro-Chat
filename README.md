@@ -12,7 +12,18 @@ We already try to using it and we decide to search something more simple than co
 ## How to use this?
 This program works in python enviroment using flet as Framework. It's pretty easy and you can develop it whenever you want by adding some extras to make it super-chat-web-app. This program runs at client side but need to run the server first. Don't worry, it will run by change a bit in server.py and c_socket.py
 
-You can use this code by:
+### If the python isn't installed
+- Installing the python
+  > https://www.python.org/downloads/release/
+- or you're in linux based OS
+  > $ sudo apt-get install python3.8
+
+- Installing flet framework
+  > pip install -U flet
+- or you're in linux based OS
+  > $ sudo pip install -U flet
+
+Now, you're ready to use this code. All you need to do is:
 - Cloning this repository
   > git clone https://github.com/lethanaxeger/Kibro-Chat
   
