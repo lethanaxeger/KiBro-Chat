@@ -1,7 +1,7 @@
 import flet as ft
 import chat
 import c_socket as cs
-
+    
 # Main page section
 def main_page(page):
     page.title = "Kita Ngobrol"
