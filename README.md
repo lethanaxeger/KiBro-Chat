@@ -18,7 +18,7 @@ You can use this code by:
 - Change you directory to Kibro-Chat (Change the ppath] following where the Kibro-Chat is saved)
   > cd ]path]\Kibro-Chat
 - Change the port in c_socket.py as you like
-  ![port_c_socket](https://github.com/lethanaxeger/KiBro-Chat/assets/53499521/8144fe33-3a06-4839-9931-a8b47e84a516)
+  > ![port_c_socket](https://github.com/lethanaxeger/KiBro-Chat/assets/53499521/8144fe33-3a06-4839-9931-a8b47e84a516)
 - Run the server.py first
   > py .\server.py
 - Run the main.py
