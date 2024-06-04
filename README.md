@@ -1,6 +1,5 @@
 # KiBro-Chat
 
-# PDF Tools
 Me and my friend made this web-based application for Final Practice in my university. So while learning how to use flet Framework I decided to commit it in my github.. it isn't a bad idea, hm?
 
 ## What does this do?
