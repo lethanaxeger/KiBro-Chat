@@ -3,3 +3,4 @@
 __pycache__/chat.cpython-311.pyc
 bore.exe
 cloudflared-windows-amd64.exe
+client.py
