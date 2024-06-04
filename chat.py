@@ -1,4 +1,7 @@
 import flet as ft
+import c_socket as cs
+import threading
+import socket
 
 # Class for declerate Message
 class Message:
@@ -13,11 +16,13 @@ class ChatMessage(ft.Row):
         super().__init__()
         self.vertical_alignment = "start"
         self.controls = [
+            # Avatar
             ft.CircleAvatar(
                 content=ft.Text(self.get_initials(message.user_name)),
                 color=ft.colors.WHITE,
                 bgcolor=self.get_avatar_color(message.user_name),
             ),
+            # Username
             ft.Column(
                 [
                     ft.Text(message.user_name, weight="bold"),
@@ -28,9 +33,11 @@ class ChatMessage(ft.Row):
             ),
         ]
 
+    #For catch username inisials
     def get_initials(self, user_name: str):
         return user_name[:1].capitalize() if user_name else "U"
 
+    #Set thhe bgcolor of avatar
     def get_avatar_color(self, user_name: str):
         colors_lookup = [
             ft.colors.AMBER, ft.colors.BLUE, ft.colors.BROWN, ft.colors.CYAN,
@@ -53,6 +60,16 @@ def chat_page(page):
         else:
             page.session.set("user_name", join_user_name.value)
             page.dialog.open = False
+
+            # Create socket for client
+            cs.client_socket
+            # Connect to server section here
+            cs.client_socket.connect
+            
+            # Start a thread to receive messages from the server
+            receive_thread = threading.Thread(target=on_message)
+            receive_thread.start()
+
             new_message.prefix = ft.Text(f"{join_user_name.value}: ")
             page.pubsub.send_all(Message(user_name=join_user_name.value, text=f"{join_user_name.value} has joined the chat.", message_type="login_message"))
             page.update()
@@ -64,8 +81,23 @@ def chat_page(page):
             new_message.focus()
             page.update()
 
+            # Sending message to server at this section
+            while True:
+                pesan = new_message.value
+                cs.client_socket.send(pesan.encode())
+
     def on_message(message: Message):
         if message.message_type == "chat_message":
+            while True:
+                try:
+                    pesan = cs.client_socket.recv(1024).decode()
+                    # print(message) #For debungging purposes
+                except:
+                    # If an error occurs, close the client socket
+                    #print("Error receiving message.")
+                    cs.client_socket.close()
+                    break
+
             m = ChatMessage(message)
         elif message.message_type == "login_message":
             m = ft.Text(message.text, italic=True, color=ft.colors.BLACK45, size=12)
@@ -129,3 +161,10 @@ def chat_page(page):
             ]
         ),
     )
+    
+# Create a socket for the client
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect to the server
+#client_socket.connect(('127.0.0.1', 5555)) //Localhost IP
+client_socket.connect((cs.IP, 5555))

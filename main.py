@@ -1,5 +1,6 @@
 import flet as ft
 import chat
+import c_socket as cs
 
 # Main page section
 def main_page(page):
@@ -37,5 +38,5 @@ def main_page(page):
             alignment=ft.alignment.center,
         )
     )
-    
-ft.app(target=main_page, view=ft.WEB_BROWSER, port=80)
+
+ft.app(target=main_page, view=ft.WEB_BROWSER, host=cs.IP, port=5555) #server.port=80 when server.py ready
