@@ -1,31 +1,27 @@
 # KiBro-Chat
-!- This is log of progress of develop this app. If there's any suggestion, please leave some. I would appreciate it. -!
 
-Juny, 03 2024
-- Update main.py
-  > change the 'from flet import *' to 'import flet as ft' for more functional and stable
-  > change all the flet element's by adding ft.
+#PDF Tools
+Me and my friend made this web-based application for Final Practice in my university. So while learning how to use flet Framework I decided to commit it in my github.. it isn't a bad idea, hm?
 
-- Fix bug at main.py at logo
-  > at src variable f is undenified make the code cannot run. By deleting it, the code works perfectly fine
+##What does this do?
+KiBro or 'Kita Ngobrol' is a web-based chatting platform using flet framework. It only sending a text message only. It's just basic websocket program that run in flet Framework with enchance UI develop.
 
-- Separating chat function from main.py to new chat.py
-  > For develop purposes
-  > Makes easy to bugging than make it in one file
+##using HTML and CSS
+We already try to using it and we decide to search something more simple than complicated by making 3 different extensions code. It makes way easier and faster than developing using HTML and CSS with python for the back-end programm.
 
-Juny, 04 2024
-- Adding server.py and c_socket.py
-  > Making a manual socket for LAN connection
-  > Code can be accessible at least in LAN
+##How to use this?
+This program works in python enviroment using flet as Framework. It's pretty easy and you can develop it whenever you want by adding some extras to make it super-chat-web-app. This program runs at client side but need to run the server first. Don't worry, it will run by change a bit in server.py and c_socket.py
 
-- Integrating the server.py and c_socket.py with main.py and chat.py
-  > Adding socket library in main.py and chat.py
-  > Import c_socket.py to chat.py and main.py for client connection
-  > Add client_socket and client_connect in chat.py at def on_message():
-  > Add host=cs.IP in main.py at ft.app()
-
-- Fix bug at chat.py
-  > Deleting pesan = cs.client_socket.recv().decode() at on_message instead only printing ChatMessage(message)
-
-- Adding transparent logo for container chat
-  > Adding the transparent logo at chat.py in ft.container
+You can use this code by:
+- Cloning this repository
+  > git clone https://github.com/lethanaxeger/Kibro-Chat
+- Change you directory to Kibro-Chat (Change the <path> following where the Kibro-Chat is saved)
+  > cd <path>\Kibro-Chat
+- Change the port in c_socket.py as you like
+  ![Alt Text](![port_c_socket](https://github.com/lethanaxeger/KiBro-Chat/assets/53499521/8144fe33-3a06-4839-9931-a8b47e84a516))
+- Run the server.py first
+  > py .\server.py
+- Run the main.py
+  > py .\main.py
+- If you're using python instead py, just change it to python
+  > python <example>
