@@ -39,4 +39,4 @@ def main_page(page):
         )
     )
 
-ft.app(target=main_page, view=ft.WEB_BROWSER, host=cs.IP, port=cs.PORT) #server.port=80 when server.py ready
+ft.app(target=main_page, view=ft.WEB_BROWSER, host=cs.IP, port=cs.PORT)
