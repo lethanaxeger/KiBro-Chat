@@ -23,7 +23,7 @@ This program works in python enviroment using flet as Framework. It's pretty eas
 - or you're in linux based OS
   > $ sudo pip install -U flet
 
-Now, you're ready to use this code. All you need to do is:
+### Now, you're ready to use this code. All you need to do is:
 - Cloning this repository
   > git clone https://github.com/lethanaxeger/Kibro-Chat
   
@@ -41,5 +41,5 @@ Now, you're ready to use this code. All you need to do is:
 
 Voila!, KiBro is running in your web. You can access it in any devices. Just add the same IP and PORT from your local device.
   
-## If you're using python instead py, just change it to python
+### If you're using python instead py, just change it to python
   > python [example]
