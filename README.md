@@ -29,7 +29,7 @@ This program works in python enviroment using flet as Framework. It's pretty eas
 - Change your directory to Kibro-Chat (Change the [path] following where the Kibro-Chat is saved)
   > cd [path]\Kibro-Chat
   
-- Change the port in server.py and c_socket.py (Both must same, otherwise it won't connected otherwise)
+- Change the port in server.py and c_socket.py (Both must same, otherwise it won't connected)
   > ![port_c_socket](https://github.com/lethanaxeger/KiBro-Chat/assets/53499521/8144fe33-3a06-4839-9931-a8b47e84a516)
   
 - Run the server.py first
