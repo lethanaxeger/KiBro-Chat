@@ -1,6 +1,7 @@
 import socket
 import threading
-import c_socket as cs
+
+PORT = 5555 # You can change it as you like, don't forget PORT from c_socket.py must following from this server.py PORT
 
 # Function to handle client connections
 def handle_client(client_socket, client_address):
@@ -20,7 +21,7 @@ def handle_client(client_socket, client_address):
     client_socket.close()
     
 # Function to broadcast messages to all clients
-def broadcast(pesan):
+def broadcast(pesan):   
     for client in clients:
         try:
             client.send(pesan.encode())
@@ -32,7 +33,7 @@ def broadcast(pesan):
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Bind the server to a specific address and port
-server.bind(('0.0.0.0', cs.PORT))
+server.bind(('0.0.0.0', PORT))
 
 # Listen for incoming connections
 server.listen(5)

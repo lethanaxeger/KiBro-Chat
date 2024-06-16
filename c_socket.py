@@ -2,7 +2,7 @@ import socket
 
 
 IP = socket.gethostbyname(socket.gethostname())
-PORT = 5555 # following by Server port
+PORT = 5555 # you can change it by following the Server port
 ADDR = (IP, PORT)
 FORMAT = "utf-8"
 SIZE = 1024
