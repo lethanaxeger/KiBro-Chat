@@ -33,8 +33,6 @@ class ChatMessage(ft.Row):
             ),
         ]
         
-        
-
     #For catch username inisials
     def get_initials(self, user_name: str):
         return user_name[:1].capitalize() if user_name else "U"
@@ -160,10 +158,3 @@ def chat_page(page):
             ]
         ),
     )
-    
-# Create a socket for the client
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-# Connect to the server
-#client_socket.connect(('127.0.0.1', 5555)) //Localhost IP
-client_socket.connect((cs.IP, cs.PORT))
